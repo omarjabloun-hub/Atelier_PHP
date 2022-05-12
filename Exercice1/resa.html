@@ -7,7 +7,7 @@
     <title>Restaurant</title>
 </head>
 <body>
-<form action="recap.php" method="post">
+<form action="recap.php" method="post" enctype="multipart/form-data">
     <div class="container" style="margin-top: 100px ; margin-bottom: 100px">
         <div class="input-group mb-3">
 
@@ -54,6 +54,10 @@
             </label>
         </div>
         <br>
+        <div class="mb-3">
+            <label for="cin" class="form-label">CIN :</label>
+            <input class="form-control" type="file" name="cin" id="cin">
+        </div>
         <div class="col-12">
             <button class="btn btn-light"  type="submit">Commander</button>
 
