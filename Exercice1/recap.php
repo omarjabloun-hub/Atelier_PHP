@@ -51,7 +51,29 @@
                     echo "-".$_POST['salade']."<br>"  ;
                 ?>
             </p>
+            <?php
+            $target_file = explode('.',$_FILES['cin']['name']) ;
+            $file_extension = strtolower(end($target_file));
+
+            $num= rand(1,1000) ;
+            while (file_exists(basename($num.".".$file_extension)) ){
+                    $num= rand(1,1000) ;
+                    echo $num ;
+            } ;
+            if (file_exists(basename("10.".$file_extension)) )
+                echo "TRUE" ;
+            $target = "./uploads/".$num.".".$file_extension ;
+            if (move_uploaded_file($_FILES["cin"]["tmp_name"] , $target)){
+
+                echo "Votre Carte d'identite est bien recu" ;
+            }
+
+            else
+                echo "Error Upload" ;
+
+            ?>
             <p class="card-text"><?="Prix de la commande : ".$price." DT"   ?></p>
+            <img src='<?=$target?>'>
 
         </div>
     </div>
