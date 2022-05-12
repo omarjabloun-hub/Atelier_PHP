@@ -19,7 +19,9 @@
 </nav>
 <div class="container">
     <?php
-    $nbSand = $_POST['nbSand'] ;
+    $nbSand = 0 ;
+    if (isset($_POST['nbSand']) && $_POST['nbSand'] > 0)
+        $nbSand = $_POST['nbSand'] ;
     $price = $nbSand * 4 ;
     if ($nbSand > 10) {
         $price = $price *0.9 ;
@@ -30,17 +32,17 @@
             <h5 class="card-title">Les details de la commande</h5>
             <h6 class="card-subtitle mb-2 text-muted"><?php
                 if (isset($_POST['nom']))
-                    echo "Mr.".$_POST['nom'] ;
+                    echo "Mr.".htmlspecialchars($_POST['nom']) ;
                 if (isset($_POST['prenom']))
-                    echo " ".$_POST['prenom'] ;
+                    echo " ".strip_tags($_POST['prenom']) ;
                 ?></h6>
             <p class="card-text">
                 <?php
-                if (isset($_POST['nbSand']))
+
                     echo $nbSand." sandwich(s) " ;
-                if (isset($_POST['listeSand']))
+                if (isset($_POST['listeSand']) && $_POST['listeSand'] != 'Choisir Ingrédients')
                     echo $_POST['listeSand']."<br>" ;
-                echo "Supplements: <br>" ;
+                echo "<br>Supplements: <br>" ;
                 if (isset($_POST['mayo']))
                     echo "-".$_POST['mayo']."<br>"  ;
                 if (isset($_POST['harissa']))
