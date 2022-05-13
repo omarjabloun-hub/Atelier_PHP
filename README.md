@@ -28,3 +28,9 @@ Page du sondage :
 si vous voté une deuxième fois
 
 ![image](https://user-images.githubusercontent.com/73075992/168270830-b83fa93d-9e26-4449-9aa5-51d18695ee8b.png)
+
+# Exercice 3
+
+![image](https://user-images.githubusercontent.com/73075992/168296045-b24cf4a6-9cc1-43ef-ae21-9445e31496fb.png)
+
+![image](https://user-images.githubusercontent.com/73075992/168296463-e1696aef-6c63-47b0-b00c-0be55fbbcfc0.png)
