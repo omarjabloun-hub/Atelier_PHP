@@ -55,25 +55,35 @@
             $target_file = explode('.',$_FILES['cin']['name']) ;
             $file_extension = strtolower(end($target_file));
 
-            $num= rand(1,1000) ;
-            while (file_exists(basename($num.".".$file_extension)) ){
-                    $num= rand(1,1000) ;
-                    echo $num ;
-            } ;
-            if (file_exists(basename("10.".$file_extension)) )
-                echo "TRUE" ;
+            $num= rand(1,100) ;
             $target = "./uploads/".$num.".".$file_extension ;
-            if (move_uploaded_file($_FILES["cin"]["tmp_name"] , $target)){
-
-                echo "Votre Carte d'identite est bien recu" ;
+            $nb = 0 ;
+            while (file_exists($target)  && $nb <100){
+                $num= rand(1,100) ;
+                $target = "./uploads/".$num.".".$file_extension ;
+                $nb +=1 ;
+            } ;
+            if ($nb >= 100){
+                echo "
+                <div class='alert alert-danger' role='alert'>
+                  Same name in the database
+                </div>" ;
             }
+            if (move_uploaded_file($_FILES["cin"]["tmp_name"] , $target)  && $nb < 100){
+            echo "
+                            <img src='$target'>
+            " ;
+                echo "
+                <div class='alert alert-success' role='alert'>
+                  Votre Carte d'identite est bien recu
+                </div>" ;
 
+            }
             else
                 echo "Error Upload" ;
 
             ?>
             <p class="card-text"><?="Prix de la commande : ".$price." DT"   ?></p>
-            <img src='<?=$target?>'>
 
         </div>
     </div>
